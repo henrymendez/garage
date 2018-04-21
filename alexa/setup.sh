@@ -29,9 +29,13 @@ safe sed -i '11s/.*/ClientID='"$clientid"'/' automated_install.sh
 # Clientsecret
 safe sed -i '14s/.*/ClientSecret='"$clientsecret"'/' automated_install.sh
 
-. automated_install.sh
+safe . automated_install.sh
 
-cd $APPDIR/samples/companionService && npm install
-cd $APPDIR/samples/javaclient && mvn -X install
+cd samples/companionService 
+safe npm install
+cd -
+
+safe cd samples/javaclient 
+safe mvn -X install
 
 echo "Done!"
